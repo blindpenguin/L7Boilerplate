@@ -5,3 +5,9 @@
 I hate doing auth stuff. If i ever have to do it again i'll burn my computer.
 
 Work in Progress
+
+
+## Included packages
+
+- laravel/ui
+- spatie/laravel-permission
