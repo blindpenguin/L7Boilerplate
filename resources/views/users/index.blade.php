@@ -1,4 +1,13 @@
-<table>
+@extends('layouts.app')
+@section('content')
+    <div class="row pb-3">
+        <div class="col">
+            {{ link_to_route('users.create', 'New User', [], ['class' => 'btn btn-sm btn-primary float-right']) }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+<table class="table">
     <thead>
     <th>Name</th>
     <th>E-Mail</th>
@@ -14,10 +23,13 @@
         <td>{{ $user->created_at }}</td>
         <td>{{ $user->updated_at }}</td>
         <td>
-            <a href="{{ route('users.show', $user->id) }}">Show</a>
-            <a href="{{ route('users.edit', $user->id) }}">Edit</a>
+            <a class="btn btn-sm btn-primary" href="{{ route('users.show', $user->id) }}">Show</a>
+            <a class="btn btn-sm btn-warning" href="{{ route('users.edit', $user->id) }}">Edit</a>
         </td>
     </tr>
     @endforeach
     </tbody>
 </table>
+        </div>
+    </div>
+@endsection
