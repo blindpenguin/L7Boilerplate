@@ -12,9 +12,17 @@
                     <ul>
                         <li>E-Mail: {{ $user->email }}</li>
                         <li>
-                            Roles: @foreach($user->roles as $role) <div class="badge badge-primary">{{ $role->name }}</div> @endforeach
-                            </li>
+                            Roles: @foreach($user->roles as $role)
+                                <div class="badge badge-primary">{{ $role->name }}</div> @endforeach
+                        </li>
                     </ul>
+                </div>
+                <div class="card-footer">
+                    <!-- delete button -->
+                {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete', 'onsubmit' => 'return confirm("Do you really want to delete this user?");']) !!}
+                {{ Form::submit('Delete', ['class' => 'btn btn-sm btn-danger float-right']) }}
+                {!! Form::close() !!}
+                <!-- end delete button -->
                 </div>
             </div>
         </div>

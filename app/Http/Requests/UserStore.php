@@ -14,7 +14,7 @@ class UserStore extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can('user.store');
+        return $this->user()->can('user.create');
     }
 
     /**
@@ -25,9 +25,9 @@ class UserStore extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:users,name',
-            'email' => 'required|unique:users.email',
-            'password' => 'required'
+            'name' => 'required|string',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed'
         ];
     }
 }
