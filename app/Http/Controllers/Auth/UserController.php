@@ -36,7 +36,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name', 'id');
+        $roles = Role::when(!auth()->user()->hasRole('superadmin'), function($query, $user) {
+            return $query->where('name', '!=', 'superadmin');
+        })->pluck('name', 'id');
         return view('users.create', [
             'roles' => $roles
         ]);
@@ -84,7 +86,9 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        $roles = Role::pluck('name', 'id');
+        $roles = Role::when(!auth()->user()->hasRole('superadmin'), function($query, $user) {
+            return $query->where('name', '!=', 'superadmin');
+        })->pluck('name', 'id');
         return view('users.edit', [
             'user' => $user,
             'roles' => $roles
