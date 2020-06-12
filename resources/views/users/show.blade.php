@@ -34,16 +34,3 @@
         </div>
     </div>
 @endsection
-@section('bottom_javascripts')
-    <script>
-        const deleteForm = document.getElementById('delete');
-        deleteForm.addEventListener('click', function (event) {
-            event.preventDefault();
-            if (confirm('Do you really want to delete this user?')) {
-                document.getElementById('confirm').checked = true;
-                console.log(document.getElementById('confirm').checked)
-                deleteForm.submit();
-            }
-        })
-    </script>
-@endsection

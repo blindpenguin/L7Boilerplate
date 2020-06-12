@@ -37227,6 +37227,8 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./helpers */ "./resources/js/helpers.js");
+
 /***/ }),
 
 /***/ "./resources/js/bootstrap.js":
@@ -37271,6 +37273,30 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/helpers.js":
+/*!*********************************!*\
+  !*** ./resources/js/helpers.js ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// Delete buttons
+var deleteForm = document.getElementById('delete');
+
+if (deleteForm) {
+  deleteForm.addEventListener('click', function (event) {
+    event.preventDefault();
+
+    if (confirm('Do you really want to delete this element?')) {
+      document.getElementById('confirm').checked = true;
+      console.log(document.getElementById('confirm').checked);
+      deleteForm.submit();
+    }
+  });
+} // End Delete buttons
 
 /***/ }),
 
