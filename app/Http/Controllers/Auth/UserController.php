@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserDelete;
 use App\Http\Requests\UserStore;
+use App\Http\Requests\UserUpdate;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -47,7 +49,7 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param UserStore $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function store(UserStore $request)
@@ -98,11 +100,11 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\User  $user
+     * @param UserStore $request
+     * @param \App\User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request, User $user)
+    public function update(UserUpdate $request, User $user)
     {
         if($request->validated()) {
             $data = $request->validated();
@@ -120,13 +122,18 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param UserDelete $request
      * @param \App\User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Exception
      */
-    public function destroy(User $user)
+    public function destroy(UserDelete $request, User $user)
     {
-        $user->delete();
-        return redirect(route('users.index'));
+        $data = $request->validated();
+        if($data['confirm'] == true) {
+            $user->delete();
+            return redirect(route('users.index'));
+        }
+        return back()->withErrors($request);
     }
 }

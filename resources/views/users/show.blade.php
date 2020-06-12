@@ -21,12 +21,29 @@
                 </div>
                 <div class="card-footer">
                     <!-- delete button -->
-                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete', 'onsubmit' => 'return confirm("Do you really want to delete this user?");']) !!}
+                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete', 'id' => 'delete']) !!}
+                        {{ Form::checkbox('confirm', null, false, ['style' => 'display: none;', 'id' => 'confirm']) }}
                         {{ Form::submit('Delete', ['class' => 'btn btn-sm btn-danger float-right']) }}
                     {!! Form::close() !!}
+                    @error('confirm')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
                     <!-- end delete button -->
                 </div>
             </div>
         </div>
     </div>
+@endsection
+@section('bottom_javascripts')
+    <script>
+        const deleteForm = document.getElementById('delete');
+        deleteForm.addEventListener('click', function (event) {
+            event.preventDefault();
+            if (confirm('Do you really want to delete this user?')) {
+                document.getElementById('confirm').checked = true;
+                console.log(document.getElementById('confirm').checked)
+                deleteForm.submit();
+            }
+        })
+    </script>
 @endsection
