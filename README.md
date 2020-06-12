@@ -22,7 +22,7 @@ Yeah, there are many boilerplates out there. Some might be more advanced than th
 
 - How can i confirm deletion of entries?
 
-The delete action requires a checkbox field with the name and id "confirm" inside a form element called "delete". It's a simple helper script that searches for those names. Once the "confirm" checkbox is set to true, it'll delete the entry.
+The delete action requires a checkbox field with the name and id "confirm". A simple helper script that searches for a form with ID "delete" will then ask for confirm. Once the "confirm" checkbox is set to true, it'll delete the entry.
 
 ## LICENSE
 
