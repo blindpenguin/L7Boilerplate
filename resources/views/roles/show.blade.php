@@ -4,24 +4,23 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <strong>{{ $user->name }}</strong>
-                    {{ link_to_route('users.edit', 'Edit user', [$user->id], ['class' => 'btn btn-sm btn-warning float-right']) }}
-                    {{ link_to_route('users.index', 'Back to index', [], ['class' => 'btn btn-sm btn-primary float-right']) }}
+                    <strong>{{ $role->name }}</strong>
+                    {{ link_to_route('roles.edit', 'Edit role', [$role->id], ['class' => 'btn btn-sm btn-warning float-right']) }}
+                    {{ link_to_route('roles.index', 'Back to index', [], ['class' => 'btn btn-sm btn-primary float-right']) }}
                 </div>
                 <div class="card-body">
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">E-Mail: {{ $user->email }}</li>
                         <li class="list-group-item">
-                            Roles:
-                            @foreach($user->roles as $role)
-                                <div class="badge badge-primary">{{ $role->name }}</div>
+                            Permissions:
+                            @foreach($role->permissions as $permission)
+                                <div class="badge badge-primary">{{ __($permission->name) }}</div>
                             @endforeach
                         </li>
                     </ul>
                 </div>
                 <div class="card-footer">
                     <!-- delete button -->
-                    {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete', 'id' => 'delete']) !!}
+                    {!! Form::open(['route' => ['roles.destroy', $role->id], 'method' => 'delete', 'id' => 'delete']) !!}
                         {{ Form::checkbox('confirm', null, false, ['style' => 'display: none;', 'id' => 'confirm']) }}
                         {{ Form::submit('Delete', ['class' => 'btn btn-sm btn-danger float-right']) }}
                     {!! Form::close() !!}

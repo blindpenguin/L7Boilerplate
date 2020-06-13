@@ -21,7 +21,14 @@ class PermissionSeeder extends Seeder
             ['name' => 'user.edit'],
             ['name' => 'user.delete'],
             ['name' => 'user.delete.force'],
-            ['name' => 'user.restore']
+            ['name' => 'user.restore'],
+            ['name' => 'role.index'],
+            ['name' => 'role.show'],
+            ['name' => 'role.create'],
+            ['name' => 'role.edit'],
+            ['name' => 'role.delete'],
+            ['name' => 'role.delete.force'],
+            ['name' => 'role.restore']
         ];
         foreach($permissions as $permission) {
             $rolePerm = \Spatie\Permission\Models\Permission::create($permission);

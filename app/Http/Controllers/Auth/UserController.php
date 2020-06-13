@@ -7,7 +7,6 @@ use App\Http\Requests\UserDelete;
 use App\Http\Requests\UserStore;
 use App\Http\Requests\UserUpdate;
 use App\User;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
 
@@ -100,7 +99,7 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param UserStore $request
+     * @param UserUpdate $request
      * @param \App\User $user
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
@@ -114,7 +113,7 @@ class UserController extends Controller
             $user->update(array_filter($data));
             $roles = Role::findMany($request->input('roles'));
             $user->syncRoles($roles);
-            return redirect(route('users.index'));
+            return redirect(route('users.show', $user->id));
         }
         return back()->withErrors($request);
     }
