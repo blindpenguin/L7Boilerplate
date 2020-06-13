@@ -11,6 +11,14 @@ To start with this boilerplate, just download it or use git clone. Make sure you
 `php artisan db:seed`
 
 
+## Recommended requirements
+
+- PHP 7.4
+- MariaDB 10.2
+
+It might work fine in PHP 7.0 and up. I only tested in 7.4. Same goes for MySQL and Co. Just try and see if your computer explodes.
+
+
 ## Used packages
 
 - [laravel/ui](https://github.com/laravel/ui)
