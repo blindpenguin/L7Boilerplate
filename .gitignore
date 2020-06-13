@@ -15,3 +15,5 @@ yarn-error.log
 composer.lock
 package-lock.json
 /public/fonts/vendor/*
+/public/css/*
+/public/js/*
