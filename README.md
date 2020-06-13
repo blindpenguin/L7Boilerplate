@@ -4,14 +4,21 @@
 
 I hate doing auth stuff. If i ever have to do it again i'll burn my computer.
 
-To start with this boilerplate, just download it or use git clone and start off. It has basic user management and nothing more.
+To start with this boilerplate, just download it or use git clone. Make sure your database settings are set in `.env` and execute the following commands:
+
+`php artisan migrate`
+
+`php artisan db:seed`
 
 
 ## Used packages
 
-- laravel/ui
-- spatie/laravel-permission
-- laravelcollective/html
+- [laravel/ui](https://github.com/laravel/ui)
+- [spatie/laravel-permission](https://github.com/spatie/laravel-permission)
+- [laravelcollective/html](https://github.com/LaravelCollective/html)
+- [kyslik/column-sortable](https://github.com/Kyslik/column-sortable)
+
+Many thanks for creating those awesome packages.
 
 
 ## Why? There's already \<insert boilerplate\>!
