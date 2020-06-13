@@ -6,12 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\RoleDelete;
 use App\Http\Requests\RoleStore;
 use App\Http\Requests\RoleUpdate;
-use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use App\Role;
 
 class RoleController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Role::class, 'role');
+    }
+
     /**
      * Display a listing of the resource.
      *
