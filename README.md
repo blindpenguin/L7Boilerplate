@@ -10,6 +10,7 @@ To start with this boilerplate, just download it or use git clone. Make sure you
 
 `php artisan db:seed`
 
+You can check out the `.env.example` for valid config keys.
 
 ## Recommended requirements
 
